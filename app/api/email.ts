@@ -1,5 +1,5 @@
 export const ptData = (names: string[]) => ({
-  "subject": "Gabriel - Luanne | Wedding 27/04",
+  "subject": "Gabriel - Luanne | Confirmação de Presença | 27/04/2024",
   "dear_guest": "Querido Convidado",
   "text_1": "Muito obrigado por aceitar nosso convite",
   "text_2": "Queríamos entrar em contato pessoalmente e expressar nossa gratidão por aceitar nosso convite de casamento.",
@@ -15,7 +15,7 @@ export const ptData = (names: string[]) => ({
 
 
 export const enData = (names: string[]) => ({
-  "subject": "Gabriel - Luanne | Wedding 27/04",
+  "subject": "Gabriel - Luanne | Confirmation of Attendance | 27/04/2024",
   "dear_guest": "Dear Guest,",
   "text_1": "We hope this email finds you well.",
   "text_2": "We wanted to personally reach out and express our gratitude for accepting our wedding invitation.",
