@@ -65,7 +65,7 @@ export default function Home() {
               type="text"
               inputMode="numeric"
               maxLength={4}
-              placeholder="Enter Code / Digite o código"
+              placeholder="Code/Código"
               value={code}
               onChange={(e) => setCode(e.target.value)}
             />
