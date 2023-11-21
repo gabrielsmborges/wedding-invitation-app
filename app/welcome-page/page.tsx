@@ -60,7 +60,7 @@ export default function WelcomePage() {
       </section>
       <section id="where" className="bg-lupurple2">
         <div className="flex flex-col md:flex-row-reverse my-12 md:mx-12">
-          <div className="p-[35px] pb-0 flex-1">
+          <div className="p-[35px] pb-0 flex-1 pt-18">
             <h3
               className="montserrat tracking-[5px]
           "

@@ -17,9 +17,9 @@ const MobileNavbar = () => {
   return (
     <>
       <nav className="p-6 justify-between items-center flex md:hidden z-51 fixed top-0 left-0 w-full bg-lupurple1">
-        <div>
+        <Link href="/welcome-page">
           <Logo />
-        </div>
+        </Link>
         <button
           className="flex flex-col h-12 w-12 justify-center items-center group"
           onClick={() => setIsOpen(!isOpen)}
@@ -54,16 +54,32 @@ const MobileNavbar = () => {
                 Confirm presence
               </button>
             </Link>
-            <Link href="#where" onClick={() => setIsOpen(false)} className="uppercase">
+            <Link
+              href="/welcome-page#where"
+              onClick={() => setIsOpen(false)}
+              className="uppercase"
+            >
               Where
             </Link>
-            <Link href="#when" onClick={() => setIsOpen(false)} className="uppercase">
+            <Link
+              href="/welcome-page#when"
+              onClick={() => setIsOpen(false)}
+              className="uppercase"
+            >
               When
             </Link>
-            <Link href="#donations" onClick={() => setIsOpen(false)} className="uppercase">
+            <Link
+              href="/welcome-page#donations"
+              onClick={() => setIsOpen(false)}
+              className="uppercase"
+            >
               Donations
             </Link>
-            <Link href="#countdown" onClick={() => setIsOpen(false)} className="uppercase">
+            <Link
+              href="/welcome-page#countdown"
+              onClick={() => setIsOpen(false)}
+              className="uppercase"
+            >
               Countdown
             </Link>
           </div>
@@ -77,21 +93,21 @@ const DesktopNavbar = () => {
   return (
     // position fixed
     <nav className="p-6 flex justify-between items-center hidden md:flex fixed top-0 left-0 w-full z-50 bg-lupurple1">
-      <div>
+      <Link href="/welcome-page">
         <Logo />
-      </div>
+      </Link>
 
       <div className="flex gap-4 items-center justify-center">
-        <Link href="#where" className="uppercase">
+        <Link href="/welcome-page#where" className="uppercase">
           Where
         </Link>
-        <Link href="#when" className="uppercase">
+        <Link href="/welcome-page#when" className="uppercase">
           When
         </Link>
-        <Link href="#donations" className="uppercase">
+        <Link href="/welcome-page#donations" className="uppercase">
           Donations
         </Link>
-        <Link href="#countdown" className="uppercase">
+        <Link href="/welcome-page#countdown" className="uppercase">
           Countdown
         </Link>
       </div>

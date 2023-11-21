@@ -56,19 +56,24 @@ export default function Home() {
           </div>
           <div className="h-40" />
           <form className="flex flex-col justify-center items-center gap-6 flex-1 w-[100%]">
-            {/* input to put 4 digit code */}
             <input
               className={`
               border-[1px]
               border-ludarkpurple rounded-[15px] p-2 bg-lupurple1 w-[327px] text-center max-w-[80%] h-[50px] montserrat uppercase font-[500] placeholder:font-[300] placeholder:text-[14px] text-[16px] text-ludarkpurple placeholder-ludarkpurple`}
               type="text"
-              // keyoard type should be numeric
               inputMode="numeric"
               maxLength={4}
               placeholder="Enter Code"
               value={code}
               onChange={(e) => setCode(e.target.value)}
             />
+            {
+              isInvalid && (
+                <p className="text-red-500 montserrat text-[14px]">
+                  Invalid code
+                </p>
+              )
+            }
             <button type="submit" onClick={handleSubmit} className={`
               bg-ludarkpurple
               montserrat

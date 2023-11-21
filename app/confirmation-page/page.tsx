@@ -5,6 +5,11 @@ import { useIsAuth } from "../util/hooks";
 import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useMutation, useQuery } from "@tanstack/react-query";
+import Loading from "../components/Loading";
+import Navbar from "../components/Navbar";
+import Tick from "../components/icons/tick";
+import Email from "../components/icons/email";
+import Phone from "../components/icons/phone";
 
 export default function ConfirmationPage() {
   const isAuth = useIsAuth();
@@ -27,6 +32,10 @@ export default function ConfirmationPage() {
       return axios.get(`/api/confirmation-one/${groupCode}`);
     },
   });
+
+  useEffect(() => {
+    console.log(selectedUsers);
+  }, [selectedUsers]);
 
   const confirmGoing = useMutation({
     mutationFn: () => {
@@ -59,75 +68,135 @@ export default function ConfirmationPage() {
 
   const submitHandler = async (e: FormEvent) => {
     e.preventDefault();
+    if (selectedUsers.length === 0) {
+      confirm(
+        "You have not selected any guests, are you sure you want to continue?"
+      );
+    }
     confirmGoing.mutate();
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
+    <main className="flex min-h-screen flex-col">
       {confirmedData.isLoading || confirmGoing.isPending ? (
-        <div>
-          <h1>Loading</h1>
-        </div>
+        <Loading />
       ) : (
-        <form onSubmit={submitHandler}>
-          <h1>Confirm who can attend the event</h1>
-          <i
-            // small print
-            className="text-sm"
-          >
-            You have until 12:00pm on 1st January 2024 to confirm who can attend
-            the event.
-          </i>
-          <ul>
-            {users.map((user) => {
-              return (
-                <li key={user.id}>
-                  <input
-                    type="checkbox"
-                    id={user.id}
-                    onChange={(e) => {
-                      if (e.target.checked) {
-                        setSelectedUsers([...selectedUsers, user]);
-                      } else {
-                        setSelectedUsers(
-                          selectedUsers.filter((selectedUser) => {
-                            return selectedUser.id !== user.id;
-                          })
-                        );
-                      }
-                    }}
-                  />
-                  <label htmlFor={user.id}>{user.name}</label>
-                </li>
-              );
-            })}
-          </ul>
-          <p>Please add contact details for the event organiser</p>
-          {/* email and phone */}
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <input
-            type="tel"
-            placeholder="Phone"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            required
-          />
+        <>
+          <Navbar />
+          <form className="p-10 mt-[100px]" onSubmit={submitHandler}>
+            <h1 className="cormorant text-5xl text-center text-black my-10">
+              Confirm Presence
+            </h1>
+            <p className="text-ludarkpurple text-center montserrat mb-5">
+              Confirm who can attend the wedding
+            </p>
+            <p className="montserrat text-[14px] text-center">
+              Yout have until the <b>5th of January 2024</b> to confirm who can
+              attend the event
+            </p>
 
-          <p>
-            We will send you a confirmation email as well as 2 reminder email in
-            3 months and 1 month before the event.
-          </p>
-          <button className="border-2 border-black" type="submit">
-            {selectedUsers.length > 0 ? "Confirm" : "No one is participating"}
-          </button>
-        </form>
+            <div className="flex flex-col gap-2 max-w-[300px] mx-auto mt-10">
+              {users.map((user) => (
+                <ConfirmationName
+                  name={user.name}
+                  confirmed={
+                    selectedUsers.findIndex(
+                      (selectedUser) => selectedUser.id === user.id
+                    ) !== -1
+                  }
+                  onClick={() => {
+                    const index = selectedUsers.findIndex(
+                      (selectedUser) => selectedUser.id === user.id
+                    );
+                    if (index === -1) {
+                      setSelectedUsers([...selectedUsers, user]);
+                    } else {
+                      setSelectedUsers(
+                        selectedUsers.filter(
+                          (selectedUser) => selectedUser.id !== user.id
+                        )
+                      );
+                    }
+                  }}
+                />
+              ))}
+            </div>
+            <p className="montserrat text-[14px] text-center italic mt-10">
+              Your invitation will be considered as{" "}
+              <b className="text-red-400">rejected</b> if we don’t get your
+              response by the <b>5th of January 2024</b>
+            </p>
+            <p className="text-ludarkpurple montserrat my-10 md:text-center">
+              Please add contact details for the event organiser...
+            </p>
+            <div className="flex max-w-[300px] border-[1px] border-grey rounded-xl mx-auto h-[50px] items-center">
+              <div className="flex items-center justify-center w-[55px] h-[50px] rounded-full">
+                <Email />
+              </div>
+              <input
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                type="email"
+                placeholder="EMAIL"
+                className="flex-1 montserrat text-[16px] text-ludarkpurple bg-transparent outline-none"
+              />
+            </div>
+            <div className="flex max-w-[300px] border-[1px] border-grey rounded-xl mx-auto h-[50px] items-center mt-5">
+              <div className="flex items-center justify-center w-[55px] h-[50px] rounded-full">
+                <Phone />
+              </div>
+              <input
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                required
+                type="tel"
+                placeholder="PHONE"
+                inputMode="tel"
+                className="flex-1 montserrat text-[16px] text-ludarkpurple bg-transparent outline-none"
+              />
+            </div>
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                className=" bg-ludarkpurple p-2 rounded-full text-[#fff] montserrat text-[14px] uppercase font-[500] w-[209px] h-[50px] mt-5"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </>
       )}
     </main>
   );
 }
+
+const ConfirmationName = ({
+  name,
+  confirmed,
+  onClick,
+}: {
+  name: string;
+  confirmed: boolean;
+  onClick?: () => void;
+}) => {
+  return (
+    <div onClick={onClick} className="cursor-pointer">
+      {confirmed ? (
+        <div className="flex items-center px-3 py-3 border-[1px] border-ludarkpurple text-white rounded-full bg-[#65119999] hover:font-[700] hover:opacity-80 transition ease transform duration-300 cursor-pointer">
+          <Tick confirmed />
+          <p className="montserrat text-[14px] text-white ml-6 uppercase font-[500]">
+            {name}
+          </p>
+        </div>
+      ) : (
+        <div className="flex items-center px-3 py-3 border-[1px] border-ludarkpurple rounded-full hover:font-[700] hover:opacity-30 transition ease transform duration-300 hover:text-white cursor-pointer">
+          <Tick />
+          <p className="montserrat text-[14px] text-ludarkpurple ml-6 uppercase ">
+            {name}
+          </p>
+        </div>
+      )}
+    </div>
+  );
+};
