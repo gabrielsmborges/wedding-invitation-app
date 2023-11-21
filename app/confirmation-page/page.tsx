@@ -104,6 +104,12 @@ export default function ConfirmationPage() {
               }
             </p>
 
+            <p className="text-ludarkpurple text-center montserrat mb-5 mt-10 font-bold">
+              {
+                language === "PT" ? "Clique nos nomes para selecionar" : "Click on the names to select"
+              }
+            </p>
+
             <div className="flex flex-col gap-2 max-w-[300px] mx-auto mt-10">
               {users.map((user) => (
                 <ConfirmationName
@@ -213,7 +219,9 @@ const ConfirmationName = ({
         </div>
       ) : (
         <div className="flex items-center px-3 py-3 border-[1px] border-ludarkpurple rounded-full hover:font-[700] hover:opacity-30 transition ease transform duration-300 hover:text-white cursor-pointer">
-          <Tick />
+          <div 
+            className="w-[24px] h-[24px] border-[1px] border-ludarkpurple rounded-full"
+          />
           <p className="montserrat text-[14px] text-ludarkpurple ml-6 uppercase ">
             {name}
           </p>
