@@ -24,7 +24,7 @@ export default function ThankYou() {
         for those joining us, and for those who can't make it, we completely
         understand. No hard feelings – your warm wishes mean the world to us! */}
         {
-          language === "PT" ? <>Obrigado pela sua resposta! Se você aceitou ou recusou, nós realmente apreciamos sua consideração. <br/><br/>Um e-mail de confirmação será enviado para aqueles que estaram presentes, e para aqueles que não podem comparecer, nós entendemos completamente. Sem ressentimentos - a sua oração por nós já é o suficiente!</> : <>Thank you for your response! Whether you've accepted or declined, we truly appreciate your consideration. <br/><br/>An email confirmation is on its way for those joining us, and for those who can't make it, we completely understand. No hard feelings – your warm wishes mean the world to us!</>
+          language === "PT" ? <>Obrigado pela sua resposta! Se você aceitou ou recusou, nós realmente apreciamos sua consideração. <br/><br/>Um e-mail de confirmação será enviado para aqueles que estarão presentes, e para aqueles que não podem comparecer, nós entendemos completamente. Sem ressentimentos - a sua oração por nós já é o suficiente!</> : <>Thank you for your response! Whether you've accepted or declined, we truly appreciate your consideration. <br/><br/>An email confirmation is on its way for those joining us, and for those who can't make it, we completely understand. No hard feelings – your warm wishes mean the world to us!</>
         }
       </p>
       <Link href="/welcome-page">
