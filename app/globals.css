@@ -2,5 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --gray: #787878;
+    --purple1: #e6d7ff;
+    --purple2: #d8bfff;
+    --dark-purple: #651199;
+
+  }
+
+html {
+    font-family: var(--font-cormorant);
+}
+
+a {
+    font-family: var(--font-montserrat);
+    font-size: 14px;
+    font-weight: 300;
+}
+
 body {
+    background: var(--purple1);
+    color: var(--gray);
+}
+
+h1, h2, h3 {
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+
+.montserrat {
+    font-family: var(--font-montserrat);
+}
+
+.cormorant {
+    font-family: var(--font-cormorant);
 }

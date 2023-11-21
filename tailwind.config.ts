@@ -7,5 +7,13 @@ const config: Config = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   plugins: [],
+  theme: {
+    colors: {
+      gray: "#787878",
+      lupurple1: "#e6d7ff",
+      lupurple2: "#d8bfff",
+      ludarkpurple: "#651199",
+    }
+  }
 }
 export default config

@@ -5,6 +5,9 @@ import { useStore } from "./store";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import Logo from "./components/icons/logo";
+import Heart from "./components/icons/heart";
+import Loading from "./components/Loading";
 
 export default function Home() {
   // get query params
@@ -42,23 +45,41 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
+    <main className="flex min-h-screen flex-col items-center justify-center p-20 ">
       {validateCode.isPending ? (
-        <div>
-          <h1>Loading</h1>
-        </div>
+        <Loading />
       ) : (
-        <div>
-          <h1>Hi friend what is your code?</h1>
-          <form onSubmit={handleSubmit}>
+        <div className="flex justify-center flex-col w-[100%]">
+          <div className="flex flex-col justify-center items-center gap-6">
+            <Logo />
+            <Heart />
+          </div>
+          <div className="h-40" />
+          <form className="flex flex-col justify-center items-center gap-6 flex-1 w-[100%]">
+            {/* input to put 4 digit code */}
             <input
+              className={`
+              border-[1px]
+              border-ludarkpurple rounded-[15px] p-2 bg-lupurple1 w-[327px] text-center max-w-[80%] h-[50px] montserrat uppercase font-[500] placeholder:font-[300] placeholder:text-[14px] text-[16px] text-ludarkpurple placeholder-ludarkpurple`}
               type="text"
-              className="border-2 border-black"
+              // keyoard type should be numeric
+              inputMode="numeric"
+              maxLength={4}
+              placeholder="Enter Code"
               value={code}
               onChange={(e) => setCode(e.target.value)}
             />
-            <p>{isInvalid ? "Invalid code" : ""}</p>
-            <button type="submit" className="border-2 border-black">
+            <button type="submit" onClick={handleSubmit} className={`
+              bg-ludarkpurple
+              montserrat
+              text-[14px]
+              uppercase
+              font-[500]
+              w-[209px]
+              h-[50px]
+              rounded-full
+              text-[#fff]
+            `}>
               Submit
             </button>
           </form>
