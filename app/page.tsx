@@ -20,6 +20,7 @@ export default function Home() {
   const groupCode = useStore((state) => state.groupCode);
   const setGroupCode = useStore((state) => state.setGroupCode);
   const setUsers = useStore((state) => state.setUsers);
+  const setLangugage = useStore((state) => state.setLanguage);
 
   const validateCode = useMutation({
     mutationFn: (code: string) => {
@@ -30,6 +31,7 @@ export default function Home() {
     onSuccess: (res) => {
       setGroupCode(code);
       setUsers(res.data);
+      setLangugage(res.data[0].language);
       router.push("/welcome-page");
     },
     onError: (err) => {
@@ -63,14 +65,14 @@ export default function Home() {
               type="text"
               inputMode="numeric"
               maxLength={4}
-              placeholder="Enter Code"
+              placeholder="Enter Code / Digite o código"
               value={code}
               onChange={(e) => setCode(e.target.value)}
             />
             {
               isInvalid && (
                 <p className="text-red-500 montserrat text-[14px]">
-                  Invalid code
+                  Invalid code / Código inválido
                 </p>
               )
             }
@@ -85,7 +87,7 @@ export default function Home() {
               rounded-full
               text-[#fff]
             `}>
-              Submit
+              Submit / Entrar
             </button>
           </form>
         </div>

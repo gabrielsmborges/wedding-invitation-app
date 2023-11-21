@@ -20,6 +20,7 @@ export default function ConfirmationPage() {
   const isModification = searchParams.get("modify") === "true";
 
   const users = useStore((state) => state.users);
+  const language = useStore((state) => state.language);
   const [selectedUsers, setSelectedUsers] = useState<typeof users>([]);
   const [email, setEmail] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
@@ -85,14 +86,22 @@ export default function ConfirmationPage() {
           <Navbar />
           <form className="p-10 mt-[100px]" onSubmit={submitHandler}>
             <h1 className="cormorant text-5xl text-center text-black my-10">
-              Confirm Presence
+              {/* Confirm Presence */}{
+                language === "PT" ? "Confirmar presença" : "Confirm presence"
+              }
             </h1>
             <p className="text-ludarkpurple text-center montserrat mb-5">
-              Confirm who can attend the wedding
+              {/* Confirm who can attend the wedding */}
+              {
+                language === "PT" ? "Confirme quem pode comparecer ao casamento" : "Confirm who can attend the wedding"
+              }
             </p>
             <p className="montserrat text-[14px] text-center">
-              Yout have until the <b>5th of January 2024</b> to confirm who can
-              attend the event
+              {/* You have until the <b>5th of January 2024</b> to confirm who can
+              attend the event */}
+              {
+                language === "PT" ? <>Você tem até o dia <b>5 de Janeiro de 2024</b> para confirmar quem pode comparecer ao evento</> : <>You have until the <b>5th of January 2024</b> to confirm who can attend the event</>
+              }
             </p>
 
             <div className="flex flex-col gap-2 max-w-[300px] mx-auto mt-10">
@@ -122,12 +131,20 @@ export default function ConfirmationPage() {
               ))}
             </div>
             <p className="montserrat text-[14px] text-center italic mt-10">
-              Your invitation will be considered as{" "}
+              {/* Your invitation will be considered as{" "}
               <b className="text-red-400">rejected</b> if we don’t get your
-              response by the <b>5th of January 2024</b>
+              response by the <b>5th of January 2024</b> */}
+              {
+                language === "PT" ? <>Seu convite será considerado como <b className="text-red-400">rejeitado</b> se não recebermos sua resposta até o dia <b>5 de Janeiro de 2024</b></> : <>Your invitation will be considered as{" "}
+              <b className="text-red-400">rejected</b> if we don’t get your
+              response by the <b>5th of January 2024</b></>
+              }
             </p>
             <p className="text-ludarkpurple montserrat my-10 md:text-center">
-              Please add contact details for the event organiser...
+              {/* Please add contact details for the event organiser... */}
+              {
+                language === "PT" ? "Por favor adicione detalhes de contato para o organizador do evento..." : "Please add contact details for the event organiser..."
+              }
             </p>
             <div className="flex max-w-[300px] border-[1px] border-grey rounded-xl mx-auto h-[50px] items-center">
               <div className="flex items-center justify-center w-[55px] h-[50px] rounded-full">
@@ -151,7 +168,9 @@ export default function ConfirmationPage() {
                 onChange={(e) => setPhone(e.target.value)}
                 required
                 type="tel"
-                placeholder="PHONE"
+                placeholder={
+                  language === "PT" ? "TELEFONE" : "PHONE"
+                }
                 inputMode="tel"
                 className="flex-1 montserrat text-[16px] text-ludarkpurple bg-transparent outline-none"
               />
@@ -161,7 +180,10 @@ export default function ConfirmationPage() {
                 type="submit"
                 className=" bg-ludarkpurple p-2 rounded-full text-[#fff] montserrat text-[14px] uppercase font-[500] w-[209px] h-[50px] mt-5"
               >
-                Submit
+                {/* Submit */}
+                {
+                  language === "PT" ? "Enviar" : "Submit"
+                }
               </button>
             </div>
           </form>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Logo from "./icons/logo";
 import { useState } from "react";
+import { useStore } from "../store";
 
 const Navbar = () => {
   return (
@@ -14,9 +15,10 @@ const Navbar = () => {
 const MobileNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const genericHamburgerLine = `h-[2px] w-6 my-[3px] rounded-full bg-ludarkpurple transition ease transform duration-300`;
+  const language = useStore((state) => state.language);
   return (
     <>
-      <nav className="p-6 justify-between items-center flex md:hidden z-51 fixed top-0 left-0 w-full bg-lupurple1">
+      <nav className="p-6 justify-between items-center flex md:hidden z-51 fixed top-0 left-0 w-full bg-lupurple1 z-50">
         <Link href="/welcome-page">
           <Logo />
         </Link>
@@ -51,7 +53,10 @@ const MobileNavbar = () => {
           <div className="flex flex-col justify-center items-center gap-6 h-full">
             <Link href="/confirmation-page">
               <button className=" bg-ludarkpurple p-2 rounded-full text-[#fff] montserrat text-[14px] uppercase font-[500] w-[209px] h-[50px]">
-                Confirm presence
+                {/* Confirm presence */}
+                {
+                  language === "PT" ? "Confirmar presença" : "Confirm presence"
+                }
               </button>
             </Link>
             <Link
@@ -59,28 +64,40 @@ const MobileNavbar = () => {
               onClick={() => setIsOpen(false)}
               className="uppercase"
             >
-              Where
+              {/* Where */}
+              {
+                language === "PT" ? "Onde" : "Where"
+              }
             </Link>
             <Link
               href="/welcome-page#when"
               onClick={() => setIsOpen(false)}
               className="uppercase"
             >
-              When
+              {/* When */}
+              {
+                language === "PT" ? "Quando" : "When"
+              }
             </Link>
             <Link
               href="/welcome-page#donations"
               onClick={() => setIsOpen(false)}
               className="uppercase"
             >
-              Donations
+              {/* Donations */}
+              {
+                language === "PT" ? "Presentes" : "Donations"
+              }
             </Link>
             <Link
               href="/welcome-page#countdown"
               onClick={() => setIsOpen(false)}
               className="uppercase"
             >
-              Countdown
+              {/* Countdown */}
+              {
+                language === "PT" ? "Contagem regressiva" : "Countdown"
+              }
             </Link>
           </div>
         </div>
@@ -90,31 +107,48 @@ const MobileNavbar = () => {
 };
 
 const DesktopNavbar = () => {
+
+  const language = useStore((state) => state.language);
   return (
     // position fixed
-    <nav className="p-6 flex justify-between items-center hidden md:flex fixed top-0 left-0 w-full z-50 bg-lupurple1">
+    <nav className="p-6 flex justify-between items-center hidden md:flex fixed top-0 left-0 w-full z-50 bg-lupurple1 z-50">
       <Link href="/welcome-page">
         <Logo />
       </Link>
 
       <div className="flex gap-4 items-center justify-center">
         <Link href="/welcome-page#where" className="uppercase">
-          Where
+          {/* Where */}
+          {
+            language === "PT" ? "Onde" : "Where"
+          }
         </Link>
         <Link href="/welcome-page#when" className="uppercase">
-          When
+          {/* When */}
+          {
+            language === "PT" ? "Quando" : "When"
+          }
         </Link>
         <Link href="/welcome-page#donations" className="uppercase">
-          Donations
+          {/* Donations */}
+          {
+            language === "PT" ? "Presentes" : "Donations"
+          }
         </Link>
         <Link href="/welcome-page#countdown" className="uppercase">
-          Countdown
+          {/* Countdown */}
+          {
+            language === "PT" ? "Contagem regressiva" : "Countdown"
+          }
         </Link>
       </div>
 
       <Link href="/confirmation-page">
         <button className=" bg-ludarkpurple p-2 rounded-full text-[#fff] montserrat text-[14px] uppercase font-[500] w-[209px] h-[50px]">
-          Confirm presence
+          {/* Confirm presence */}
+          {
+            language === "PT" ? "Confirmar presença" : "Confirm presence"
+          }
         </button>
       </Link>
     </nav>

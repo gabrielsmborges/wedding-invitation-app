@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { guestBase } from '../../airtable'
 import axios from 'axios'
+import { enData, ptData } from '../../email'
+import sgMail from '@sendgrid/mail'
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY as string)
 
 export async function GET(
     request: NextRequest,
@@ -59,12 +63,15 @@ export async function POST(
             "Name",
             "Group",
             "Confirmation 0",
+            "Language"
         ],
         filterByFormula: `Group = "${code}"`,
     }).all()
 
     const guestsIds = guests.map(guest => guest.id)
 
+    // find the language of the group
+    const language = guests[0].fields.Language as "PT" | "EN"
 
     await guestBase('General View').update(guestsIds.map(guestId => {
         return {
@@ -78,14 +85,22 @@ export async function POST(
     }))
 
     try {
-        const emailHookUrl = process.env.EMAIL_HOOK_URL
-        if (!emailHookUrl) {
-            throw new Error("EMAIL_HOOK_URL is not set");
-        }
-        await axios.post(emailHookUrl, {
-            email: email,
-            people: guestsGoingNames,  
+        const templateData = language === "PT" ? ptData(guestsGoingNames) : enData(guestsGoingNames)
+        await sgMail.send({
+            templateId: process.env.SENDGRID_TEMPLATE_ID as string,
+            from: {
+                email: "gabrielsmborges@gmail.com",
+                name: "Gabriel Borges",
+            },
+            to: email,
+            personalizations: [{
+                to: [{
+                    email,
+                }],
+                dynamicTemplateData: templateData,
+            }]
         })
+
     } catch (error) {
         console.log(error)
     }

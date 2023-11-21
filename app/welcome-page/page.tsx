@@ -16,6 +16,7 @@ export default function WelcomePage() {
   const users = useStore((state) => state.users);
   const today = DateTime.now();
   const weddingDate = DateTime.fromISO("2024-04-27");
+  const language = useStore((state) => state.language);
 
   const daysLeft = weddingDate.diff(today, "days").days;
   return (
@@ -28,7 +29,9 @@ export default function WelcomePage() {
               className="montserrat tracking-[5px]
           "
             >
-              Hello
+              {
+                language === "PT" ? "Olá" : "Hello"
+              }
             </h3>
             <h1 className="text-ludarkpurple text-5xl my-5 leading-[58px]">
               {users.map((user, index) => {
@@ -41,11 +44,16 @@ export default function WelcomePage() {
               })}
             </h1>
             <p className="montserrat mb-5">
-              You are our guest for our wedding on the 27th of April 2024
+              {/* You are our guest for our wedding on the 27th of April 2024 */}
+              {
+                language === "PT" ? "Você é nosso convidado para o nosso casamento no dia 27 de Abril de 2024" : "You are our guest for our wedding on the 27th of April 2024"
+              }
             </p>
             <Link href="/confirmation-page">
               <button className=" bg-ludarkpurple p-2 rounded-full text-[#fff] montserrat text-[14px] uppercase font-[500] w-[209px] h-[50px]">
-                Confirm presence
+                {
+                  language === "PT" ? "Confirmar presença" : "Confirm presence"
+                }
               </button>
             </Link>
           </div>
@@ -65,7 +73,9 @@ export default function WelcomePage() {
               className="montserrat tracking-[5px]
           "
             >
-              Where
+              {
+                language === "PT" ? "Onde" : "Where"
+              }
             </h3>
             <h1 className="text-ludarkpurple text-5xl my-5 leading-[58px]">
               Quinta do Pinheiro
@@ -76,11 +86,18 @@ export default function WelcomePage() {
             <p className="montserrat">Freamunde, Portugal</p>
             <p className="montserrat flex items-center">
               <Plane />
-              &nbsp; Closest Airport - Porto Airport (OPO)
+              &nbsp;
+              {/* Closest Airport - Porto Airport (OPO) */}
+              {
+                language === "PT" ? "Aeroporto mais próximo - Aeroporto do Porto (OPO)" : "Closest Airport - Porto Airport (OPO)"
+              }
             </p>
             <Link href="https://www.hotelquintadopinheiro.com/" target="_blank">
               <button className="mt-5 p-2 px-6 rounded-full montserrat text-[14px] uppercase h-[50px] border-[1px]">
-                More details
+                {/* More details */}
+                {
+                  language === "PT" ? "Mais detalhes" : "More details"
+                }
               </button>
             </Link>
           </div>
@@ -108,19 +125,33 @@ export default function WelcomePage() {
               className="montserrat tracking-[5px]
           "
             >
-              When
+              {/* When */}
+              {
+                language === "PT" ? "Quando" : "When"
+              }
             </h3>
             <h1 className="text-ludarkpurple text-5xl my-5 leading-[58px]">
-              Saturday <br />
-              27<span className="text-sm z-0">th</span> of April 2024
+              {/*  */}
+              {
+                language === "PT" ? <>
+                  Sábado <br />
+                  27 de Abril de 2024
+                </> : <>Saturday <br />
+              27<span className="text-sm z-0">th</span> of April 2024</>
+              }
             </h1>
             <p className="montserrat mb-5">
-              More details about the exact time will be available in the next
-              few weeks
+              {/* More details about the exact time will be available in the next few weeks */}
+              {
+                language === "PT" ? "Mais detalhes sobre a hora exata estarão disponíveis nas próximas semanas" : "More details about the exact time will be available in the next few weeks"
+              }
             </p>
             <Link href="https://calndr.link/event/BAkgZBa2o1" target="_blank">
               <button className="mt-5 p-2 px-6 rounded-full montserrat text-[14px] uppercase h-[50px] border-[1px]">
-                Add to my calendar
+                {/* Add to my calendar */}
+                {
+                  language === "PT" ? "Adicionar ao meu calendário" : "Add to my calendar"
+                }
               </button>
             </Link>
           </div>
@@ -140,15 +171,23 @@ export default function WelcomePage() {
               className="montserrat tracking-[5px]
           "
             >
-              Donations
+              {/* Donations */}
+              {
+                language === "PT" ? "Presentes" : "Donations"
+              }
             </h3>
             <h1 className="text-ludarkpurple text-5xl my-5 leading-[58px]">
-              Gift Space!
+              {/* Gift Space! */}{
+                language === "PT" ? "Espaço para presentes!" : "Gift Space!"
+              }
             </h1>
             <p className="montserrat mb-5 text-center">
-              Your presence at our wedding is the greatest gift of all! However,
+              {/* Your presence at our wedding is the greatest gift of all! However,
               should you wish to help us celebrate with a gift, feel free to
-              click in one of the link below:
+              click in one of the link below: */}
+              {
+                language === "PT" ? "Sua presença no nosso casamento é o maior presente de todos! No entanto, se você deseja nos ajudar a comemorar com um presente, sinta-se à vontade para clicar em um dos links abaixo:" : "Your presence at our wedding is the greatest gift of all! However, should you wish to help us celebrate with a gift, feel free to click in one of the link below:"
+              }
             </p>
             <div className="flex flex-col justify-center items-center">
               <Link href="https://revolut.me/gabrielborges" target="_blank">
@@ -181,14 +220,23 @@ export default function WelcomePage() {
         className="flex flex-col items-center justify-center py-14"
       >
         <p className="montserrat text-[20px] text-center text-ludarkpurple mb-5">
-          Hope to see you in <br />
-          <b>{Math.max(Math.floor(daysLeft), 0) || 0}</b> days!
+          {/* Hope to see you in */}
+          {
+            language === "PT" ? "Esperamos vê-lo em" : "Hope to see you in"
+          }
+          <br />
+          <b>{Math.max(Math.floor(daysLeft), 0) || 0}</b>{
+            language === "PT" ? " dias" : " days"
+          }
         </p>
         <Image src="/countdown.png" width={433 / ratio} height={433} alt="" />
         <div className="mt-14" />
         <Link href="/confirmation-page">
           <button className=" bg-ludarkpurple p-2 rounded-full text-[#fff] montserrat text-[14px] uppercase font-[500] w-[209px] h-[50px]">
-            Confirm presence
+            {/* Confirm presence */}
+            {
+              language === "PT" ? "Confirmar presença" : "Confirm presence"
+            }
           </button>
         </Link>
         <div className="flex flex-col items-center justify-center gap-6 mt-14">

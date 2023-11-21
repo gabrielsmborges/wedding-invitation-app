@@ -6,11 +6,13 @@ type State = {
         id: string;
         name: string;
     }[];
+    language: "PT" | "EN";
 }
 
 type Actions = {
     setGroupCode: (groupCode: State['groupCode']) => void;
     setUsers: (users: State['users']) => void;
+    setLanguage: (language: State['language']) => void;
 }
 
 export const useStore = create<State & Actions>((set) => ({
@@ -18,4 +20,6 @@ export const useStore = create<State & Actions>((set) => ({
     setGroupCode: (groupCode) => set({ groupCode }),
     users: [],
     setUsers: (users) => set({ users }),
+    language: 'PT',
+    setLanguage: (language) => set({ language }),
   }))
