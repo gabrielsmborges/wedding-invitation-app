@@ -78,8 +78,8 @@ export async function POST(
             id: guestId,
             fields: {
                 "Confirmation 0": (guestsGoingIds as any[]).includes(guestId) ? "Yes" : "No",
-                "Email": (guestsGoingIds as any[]).includes(guestId) ? email : "",
-                "Phone Number": (guestsGoingIds as any[]).includes(guestId) ? phone : "",
+                "Email": email,
+                "Phone Number": phone,
             }
         }
     }))
