@@ -27,11 +27,16 @@ export default function ThankYou() {
           language === "PT" ? <>Obrigado pela sua resposta! Se você aceitou ou recusou, nós realmente apreciamos sua consideração. <br/><br/>Um e-mail de confirmação será enviado para aqueles que estarão presentes, e para aqueles que não podem comparecer, nós entendemos completamente. Sem ressentimentos - a sua oração por nós já é o suficiente!</> : <>Thank you for your response! Whether you've accepted or declined, we truly appreciate your consideration. <br/><br/>An email confirmation is on its way for those joining us, and for those who can't make it, we completely understand. No hard feelings – your warm wishes mean the world to us!</>
         }
       </p>
+      <p className="montserrat text-lg text-center text-black my-10 text-ludarkpurple font-bold">
+        {
+          language === "PT" ? "Verifique sua caixa de spam se você não receber o e-mail de confirmação." : "Check your spam/junk folder if you don't receive the confirmation email."
+        }
+      </p>
       <Link href="/welcome-page">
         <button className=" bg-ludarkpurple p-2 rounded-full text-[#fff] montserrat text-[14px] uppercase font-[500] w-[209px] h-[50px]">
             {/* Go back home */}
             {
-              language === "PT" ? "Voltar para página inicial" : "Go back home"
+              language === "PT" ? "Voltar para o inicio" : "Go back home"
             }
         </button>
       </Link>

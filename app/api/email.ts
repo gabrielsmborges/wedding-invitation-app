@@ -15,13 +15,13 @@ export const ptData = (names: string[]) => ({
 
 
 export const enData = (names: string[]) => ({
-  "subject": "Gabriel - Luanne | Confirmation of Attendance | 27/04/2024",
+  "subject": "Gabriel - Luanne | Wedding 27/04",
   "dear_guest": "Dear Guest,",
   "text_1": "We hope this email finds you well.",
-  "text_2": "We wanted to personally reach out and express our gratitude for accepting our wedding invitation.",
+  "text_2": "We wanted to reach out and express our gratitude for accepting our wedding invitation.",
   "text_3": "We are thrilled that:",
-  "text_4": "will be joining us on our special day.",
-  "text_5": "Please note there will be a further three emails that we’ll be sending to re-confirm the guest list, to ensure that we have an accurate guest count for the event. It is crucial for us to have an exact count of attendees in order to comply with the venue's strict regulations and avoid any potential fines.",
+  "text_4": "Will be joining us on our special day.",
+  "text_5": "Please note there will be a further three emails that we’ll be sending to re-confirm the guest list, to ensure that we have an accurate guest count for the event - It is crucial for us to have an exact count of attendees in order to comply with the venue's strict regulations and avoid any potential fines.",
   "text_6": "Once again, we are delighted that you will be celebrating with us, and we look forward to hearing from you soon.",
   "text_7": "Warmest regards,",
   "text_8": "Gabriel & Luanne",

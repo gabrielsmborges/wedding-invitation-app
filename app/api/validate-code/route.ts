@@ -14,7 +14,8 @@ export async function POST(request: NextRequest) {
         fields: [
             "Group",
             "Name",
-            "Language"
+            "Language",
+            "Display Name",
         ],
     }).all()
 
@@ -38,7 +39,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
         groups.map((group) => ({
             id: group.id,
-            name: group.fields.Name,
+            name: group.fields["Display Name"],
             language: group.fields.Language,
         })),
         { status: 200 }
