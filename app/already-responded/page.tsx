@@ -33,6 +33,11 @@ export default function ConfirmationPage() {
           }
       </button>
       </Link>
+      <Link href="/welcome-page" className="mt-10 underline">
+        {
+          language === "PT" ? "Voltar para a página inicial" : "Back to home page"
+        }
+      </Link>
     </main>
   );
 }

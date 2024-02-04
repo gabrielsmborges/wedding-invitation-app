@@ -9,16 +9,26 @@ import Plane from "../components/icons/plane";
 import Logo from "../components/icons/logo";
 import Heart from "../components/icons/heart";
 import { DateTime } from "luxon";
+import { Frown, HeartCrack } from "lucide-react";
 
 export default function WelcomePage() {
   const isAuth = useIsAuth();
   const router = useRouter();
   const users = useStore((state) => state.users);
+
+  const didSomeoneRespond = users.some((user) => user.confirmed === true);
+
+  console.log(users);
   const today = DateTime.now();
   const weddingDate = DateTime.fromISO("2024-04-27");
   const language = useStore((state) => state.language);
 
   const daysLeft = weddingDate.diff(today, "days").days;
+
+  if (!didSomeoneRespond) {
+    return <NoAnswer />;
+  }
+
   return (
     <main className="pt-14">
       <Navbar />
@@ -245,6 +255,43 @@ export default function WelcomePage() {
         </div>
       </section>
     </main>
+  );
+}
+
+
+const NoAnswer = () => {
+  const language = useStore((state) => state.language);
+  const users = useStore((state) => state.users);
+  return (
+    <section id="welcome">
+        <div className="p-[15px] gap-10 flex flex-col md:flex-row my-12 flex-1 justify-center">
+          <div className="p-[20px] text-center">
+
+            <h3 className="montserrat tracking-[5px]">
+              {
+                language === "PT" ? "Olá" : "Hello"
+              }
+            </h3>
+            <h1 className="text-ludarkpurple text-5xl my-5 leading-[58px]">
+              {users.map((user, index) => {
+                // add a comma after each name except the last one
+                if (index === users.length - 1) {
+                  return `${user.name}`;
+                } else {
+                  return `${user.name}, `;
+                }
+              })}
+            </h1>
+            <p className="montserrat mb-5 w-[80%] max-w-[900px] mx-auto">
+              {/* You are our guest for our wedding on the 27th of April 2024 */}
+              {
+                language === "PT" ? "Infelizmente, a nossa lista de convidados foi fechada no dia 4 de fevereiro, e você não respondeu a tempo. Se você acha que isso é um erro, por favor entre em contato conosco." : "Unfortunately, our guest list was closed on February 4th, and you did not respond in time. If you think this is a mistake, please contact us."
+              }
+            </p>
+            <Frown size={50} className="mx-auto"/>
+          </div>
+        </div>
+      </section>
   );
 }
 

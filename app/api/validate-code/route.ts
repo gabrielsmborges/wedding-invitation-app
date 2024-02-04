@@ -16,6 +16,7 @@ export async function POST(request: NextRequest) {
             "Name",
             "Language",
             "Display Name",
+            "Confirmation 0",
         ],
     }).all()
 
@@ -41,6 +42,7 @@ export async function POST(request: NextRequest) {
             id: group.id,
             name: group.fields["Display Name"],
             language: group.fields.Language,
+            confirmed: group.fields["Confirmation 0"] === "Yes"
         })),
         { status: 200 }
     )

@@ -5,6 +5,7 @@ type State = {
     users: {
         id: string;
         name: string;
+        confirmed: boolean;
     }[];
     language: "PT" | "EN";
 }
