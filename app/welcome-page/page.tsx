@@ -151,12 +151,17 @@ export default function WelcomePage() {
               }
             </h1>
             <p className="montserrat mb-5">
-              {/* More details about the exact time will be available in the next few weeks */}
               {
-                language === "PT" ? "Mais detalhes sobre a hora exata estarão disponíveis nas próximas semanas" : "More details about the exact time will be available in the next few weeks"
+                language === "PT" ? "Começo da cerimônia:" : "Ceremony starts at:"
               }
+              <p className="text-2xl font-bold">
+                {
+                  language === "PT" ? "15:00" : "3:00 PM"
+                }
+              </p>
             </p>
-            <Link href="https://calndr.link/event/BAkgZBa2o1" target="_blank">
+            {/* https://calndr.link/events/ZFcZgcUCWw?secret=5FKdeYcmlr0nCmRCzWfEeWSJIOdxvHWiFE9w */}
+            <Link href="https://calndr.link/event/ZFcZgcUCWw" target="_blank">
               <button className="mt-5 p-2 px-6 rounded-full montserrat text-[14px] uppercase h-[50px] border-[1px]">
                 {/* Add to my calendar */}
                 {
