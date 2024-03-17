@@ -17,10 +17,13 @@ export async function POST(request: NextRequest) {
             "Language",
             "Display Name",
             "Confirmation 0",
+            "Confirmation 1"
         ],
     }).all()
 
-    if (!groups.length) {
+    const filteredGroup = groups.filter((group) => group.fields["Confirmation 0"] === "Yes")
+
+    if (!filteredGroup.length) {
         return NextResponse.json(
             {
                 error: 'No group found',
@@ -29,20 +32,13 @@ export async function POST(request: NextRequest) {
         )
     }
 
-
-
-
-
-
-
-    // const guestsToReturn = guests.map((guest) => guest._rawJson.fields)
-
     return NextResponse.json(
-        groups.map((group) => ({
+        filteredGroup.map((group) => ({
             id: group.id,
             name: group.fields["Display Name"],
             language: group.fields.Language,
-            confirmed: group.fields["Confirmation 0"] === "Yes"
+            confirmed: group.fields["Confirmation 0"] === "Yes",
+            confirmation1: group.fields["Confirmation 1"] === "Yes"
         })),
         { status: 200 }
     )

@@ -102,7 +102,7 @@ export async function POST(
         })
 
     } catch (error) {
-        console.log(error)
+        // Do nothing
     }
 
     return NextResponse.json({

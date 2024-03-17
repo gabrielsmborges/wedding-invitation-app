@@ -17,13 +17,13 @@ export default function WelcomePage() {
   const users = useStore((state) => state.users);
 
   const didSomeoneRespond = users.some((user) => user.confirmed === true);
-
-  console.log(users);
   const today = DateTime.now();
   const weddingDate = DateTime.fromISO("2024-04-27");
   const language = useStore((state) => state.language);
 
   const daysLeft = weddingDate.diff(today, "days").days;
+
+  const code = useStore((state) => state.groupCode);
 
   if (!didSomeoneRespond) {
     return <NoAnswer />;
@@ -59,10 +59,13 @@ export default function WelcomePage() {
                 language === "PT" ? "Você é nosso convidado para o nosso casamento no dia 27 de Abril de 2024" : "You are our guest for our wedding on the 27th of April 2024"
               }
             </p>
-            <Link href="/confirmation-page">
+            <Link href={`
+              ${process.env.NEXT_PUBLIC_CONFIRMATION_URL}/code/${code}
+              `
+            }>
               <button className=" bg-ludarkpurple p-2 rounded-full text-[#fff] montserrat text-[14px] uppercase font-[500] w-[209px] h-[50px]">
                 {
-                  language === "PT" ? "Confirmar presença" : "Confirm presence"
+                  language === "PT" ? "Reconfirmar presença" : "Reconfirm presence"
                 }
               </button>
             </Link>
@@ -246,12 +249,11 @@ export default function WelcomePage() {
         </p>
         <Image src="/countdown.png" width={433 / ratio} height={433} alt="" />
         <div className="mt-14" />
-        <Link href="/confirmation-page">
+        <Link href={`
+              ${process.env.NEXT_PUBLIC_CONFIRMATION_URL}/code/${code}
+              `}>
           <button className=" bg-ludarkpurple p-2 rounded-full text-[#fff] montserrat text-[14px] uppercase font-[500] w-[209px] h-[50px]">
-            {/* Confirm presence */}
-            {
-              language === "PT" ? "Confirmar presença" : "Confirm presence"
-            }
+            {language === "PT" ? "Reconfirmar presença" : "Reconfirm presence"}
           </button>
         </Link>
         <div className="flex flex-col items-center justify-center gap-6 mt-14">

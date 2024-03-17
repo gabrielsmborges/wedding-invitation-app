@@ -34,10 +34,6 @@ export default function ConfirmationPage() {
     },
   });
 
-  useEffect(() => {
-    console.log(selectedUsers);
-  }, [selectedUsers]);
-
   const confirmGoing = useMutation({
     mutationFn: () => {
       const selectedUsersIds = selectedUsers.map(
