@@ -10,5 +10,4 @@ export const loader = async ({ params, request}: LoaderFunctionArgs) => {
     }
 
     return await createCodeSession({ request, code: params.code });
-
 };
