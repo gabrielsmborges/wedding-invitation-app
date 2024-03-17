@@ -44,19 +44,31 @@ export default function Index() {
         </div>
         <div className="min-h-40 flex flex-col items-center justify-center my-5">
           <h3 className="text-ludarkpurple text-4xl my-5 leading-[58px] text-center">
-            Reconfirmar Presença
+            {/* Reconfirmar Presença */}
+            Reconfirm Presence
           </h3>
           <p className="montserrat max-w-[80%]">
-            Olá! Como você já sabe, nosso casamento está chegando em{" "}
-            <b>{diasRestantes} dias</b>.<br />
-            <br /> É fundamental para nós garantir que tenhamos uma lista
+            {/* Olá! Como você já sabe, nosso casamento está chegando em{" "} */}
+            Hi! As you already know, our wedding is coming in{" "}
+            <b>{diasRestantes} days</b>.<br />
+            <br /> 
+            {/* É fundamental para nós garantir que tenhamos uma lista
             precisa de convidados com antecedência para evitarmos multas e
             eventuais constrangimentos com pessoas que não poderão entrar no
             local do casamento pois não confirmaram sua presença.
             <br />
             <br />
             Por isso, gostaríamos muito que você reconfirme sua presença.
-            Coloque seu código abaixo para reconfirmar...
+            Coloque seu código abaixo para reconfirmar... */}
+
+            It is essential for us to ensure that we have an accurate list of
+            guests in advance to avoid fines and possible embarrassment with
+            people who will not be able to enter the wedding venue because they
+            did not confirm their presence.
+            <br />
+            <br />
+            Therefore, we would love for you to reconfirm your presence.
+            Enter your code below to reconfirm...
           </p>
         </div>
         <form
@@ -77,7 +89,7 @@ export default function Index() {
           />
           {isInvalid && (
             <p className="text-red-500 montserrat text-[14px]">
-              Invalid code / Código inválido
+              Invalid code
             </p>
           )}
           <button
@@ -94,7 +106,7 @@ export default function Index() {
               text-[#fff]
             `}
           >
-            Submit / Entrar
+            Submit
           </button>
         </form>
       </div>

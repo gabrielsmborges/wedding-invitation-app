@@ -1,6 +1,7 @@
 import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import stylesheet from "./tailwind.css";
+import favicon from "./favicon.ico";
 import {
   Links,
   LiveReload,
@@ -12,14 +13,15 @@ import {
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "Gabriel Luanne" },
+    { name: "description", content: "Reconfirm" },
   ];
 };
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
   { rel: "stylesheet", href: stylesheet },
+  { rel: "icon", href: favicon },
 
 ];
 
