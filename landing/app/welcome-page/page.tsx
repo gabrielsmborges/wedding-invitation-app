@@ -279,6 +279,19 @@ const NoAnswer = () => {
               }
             </p>
             <Frown size={50} className="mx-auto"/>
+            <div className="mt-5"/>
+            <a
+            href="https://linktr.ee/gabriel.luanne"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <button className=" bg-lupurple2 p-2 rounded-full text-[#fff] montserrat text-[14px] uppercase font-[500] px-4">
+              {/* Gift us 🎁 */}
+              {
+                language === "PT" ? "Presentes 🎁" : "Gift us 🎁"
+              }
+            </button>
+          </a>
           </div>
         </div>
       </section>
