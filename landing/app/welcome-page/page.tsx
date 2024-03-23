@@ -275,7 +275,7 @@ const NoAnswer = () => {
             <p className="montserrat mb-5 w-[80%] max-w-[900px] mx-auto">
               {/* You are our guest for our wedding on the 27th of April 2024 */}
               {
-                language === "PT" ? "Infelizmente, a nossa lista de convidados foi fechada no dia 24 de Março, e você não respondeu a tempo. Se você acha que isso é um erro, por favor entre em contato conosco." : "Unfortunately, our guest list was closed on March 24th, and you did not respond in time. If you think this is a mistake, please contact us."
+                language === "PT" ? "Infelizmente, a nossa lista de convidados foi fechada no dia 24 de Março. Se você acha que isso é um erro, por favor entre em contato conosco." : "Unfortunately, our guest list was closed on March 24th. If you think this is a mistake, please contact us."
               }
             </p>
             <Frown size={50} className="mx-auto"/>
