@@ -59,16 +59,6 @@ export default function WelcomePage() {
                 language === "PT" ? "Você é nosso convidado para o nosso casamento no dia 27 de Abril de 2024" : "You are our guest for our wedding on the 27th of April 2024"
               }
             </p>
-            <Link href={`
-              ${process.env.NEXT_PUBLIC_CONFIRMATION_URL}/code/${code}
-              `
-            }>
-              <button className=" bg-ludarkpurple p-2 rounded-full text-[#fff] montserrat text-[14px] uppercase font-[500] w-[209px] h-[50px]">
-                {
-                  language === "PT" ? "Reconfirmar presença" : "Reconfirm presence"
-                }
-              </button>
-            </Link>
           </div>
           <Image
             src="/welcome.png"
@@ -249,13 +239,6 @@ export default function WelcomePage() {
         </p>
         <Image src="/countdown.png" width={433 / ratio} height={433} alt="" />
         <div className="mt-14" />
-        <Link href={`
-              ${process.env.NEXT_PUBLIC_CONFIRMATION_URL}/code/${code}
-              `}>
-          <button className=" bg-ludarkpurple p-2 rounded-full text-[#fff] montserrat text-[14px] uppercase font-[500] w-[209px] h-[50px]">
-            {language === "PT" ? "Reconfirmar presença" : "Reconfirm presence"}
-          </button>
-        </Link>
         <div className="flex flex-col items-center justify-center gap-6 mt-14">
           <Logo width={191} />
           <Heart />
@@ -292,7 +275,7 @@ const NoAnswer = () => {
             <p className="montserrat mb-5 w-[80%] max-w-[900px] mx-auto">
               {/* You are our guest for our wedding on the 27th of April 2024 */}
               {
-                language === "PT" ? "Infelizmente, a nossa lista de convidados foi fechada no dia 4 de fevereiro, e você não respondeu a tempo. Se você acha que isso é um erro, por favor entre em contato conosco." : "Unfortunately, our guest list was closed on February 4th, and you did not respond in time. If you think this is a mistake, please contact us."
+                language === "PT" ? "Infelizmente, a nossa lista de convidados foi fechada no dia 24 de Março, e você não respondeu a tempo. Se você acha que isso é um erro, por favor entre em contato conosco." : "Unfortunately, our guest list was closed on March 24th, and you did not respond in time. If you think this is a mistake, please contact us."
               }
             </p>
             <Frown size={50} className="mx-auto"/>

@@ -52,17 +52,6 @@ const MobileNavbar = () => {
             ></div>
           </div>
           <div className="flex flex-col justify-center items-center gap-6 h-full">
-            <Link href={`
-              ${process.env.NEXT_PUBLIC_CONFIRMATION_URL}/code/${code}
-              `
-            }>
-              <button className=" bg-ludarkpurple p-2 rounded-full text-[#fff] montserrat text-[14px] uppercase font-[500] w-[209px] h-[50px]">
-                {/* Confirm presence */}
-                {
-                  language === "PT" ? "Reconfirmar presença" : "Reconfirm presence"
-                }
-              </button>
-            </Link>
             <Link
               href="/disclaimer"
               onClick={() => setIsOpen(false)}
@@ -165,18 +154,6 @@ const DesktopNavbar = () => {
           }
         </Link>
       </div>
-
-      <Link href={`
-              ${process.env.NEXT_PUBLIC_CONFIRMATION_URL}/code/${code}
-              `
-            }>
-        <button className=" bg-ludarkpurple p-2 rounded-full text-[#fff] montserrat text-[14px] uppercase font-[500] w-[209px] h-[50px]">
-          {/* Confirm presence */}
-          {
-            language === "PT" ? "Reconfirmar presença" : "Reconfirm presence"
-          }
-        </button>
-      </Link>
     </nav>
   );
 };
