@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
         ],
     }).all()
 
-    const filteredGroup = groups.filter((group) => group.fields["Confirmation 0"] === "Yes")
+    const filteredGroup = groups.filter((group) => group.fields["Confirmation 1"] === "Yes")
 
     if (!filteredGroup.length) {
         return NextResponse.json(
